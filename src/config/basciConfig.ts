@@ -1,0 +1,1 @@
+export const DingLink = 'https://oapi.dingtalk.com/robot/send?access_token=e9b5b5516b3fba7131837277b0242a7d17be394707bc0d6b46111ed6934bb0f3'

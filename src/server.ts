@@ -4,6 +4,7 @@ import * as koaBody from 'koa-body'
 import * as path from 'path'
 import router from './routes'
 import * as fs from 'fs'
+import { ScheduleTask } from './tools/schedule'
 
 const app = new Koa();
 app.on('error', (err, ctx) => {
@@ -21,16 +22,17 @@ app.use(koaBody({
     },
   }
 }));
+
 /** 错误处理 */
 app.use(async (ctx, next) => {
   const notFound = (await fs.readFileSync(__dirname + '/statics/404.html')).toString()
-  try{
+  try {
     await next()
     if (!ctx.body) {
       ctx.status = 404
       ctx.body = notFound
     }
-  }catch(e){
+  } catch (e) {
     ctx.status = 500
     ctx.body = e.message
   }
@@ -38,6 +40,11 @@ app.use(async (ctx, next) => {
 /** 路由挂载 */
 app.use(router.routes())
 
-app.listen(3002,'',1,() => {
+app.listen(3002,'',1, async () => {
+  // 从json读取配置
+  const rss = await fs.readFileSync(path.join(__dirname,'./config/rss.json'), 'utf-8').toString()
+  // 注册爬取任务
+  ScheduleTask(rss)
   console.log('server is start!')
 });
+

@@ -1,0 +1,32 @@
+{
+  "urls": [
+    {
+      "name": "test",
+      "path": "https://www.cnblogs.com/mybilibili/",
+      "list": "#mainContent .forFlow .day",
+      "title": ".postTitle a span",
+      "messageURL": ".postTitle2",
+      "picURL": "",
+      "from": "测试地址",
+      "time": "",
+      "is_static": true,
+      "hour": 8,
+      "minute": 50,
+      "dayOfWeek": [1,2,3,4,5]
+    },
+    {
+      "name": "tencent/games",
+      "path": "https://i.news.qq.com/trpc.qqnews_web.kv_srv.kv_srv_http_proxy/list?sub_srv_id=games&srv_id=pc&offset=0&limit=20&strategy=1&ext={%22pool%22:[%22top%22],%22is_filter%22:10,%22check_type%22:true}",
+      "list": "data.list",
+      "title": "title",
+      "messageURL": "url",
+      "picURL": "img",
+      "from": "腾讯",
+      "time": "create_time",
+      "is_static": false,
+      "hour": 19,
+      "minute": 13,
+      "dayOfWeek": [1,2,3,4,5]
+    }
+  ]
+}
